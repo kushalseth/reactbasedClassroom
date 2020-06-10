@@ -7,18 +7,20 @@ import { bindActionCreators } from "redux";
 import CourseList from "./CourseList";
 
 class CoursesPage extends React.Component {
-
     componentDidMount() {
-        debugger;
-        this.props.actions.loadCourses().catch(error => {
-            alert("Loading courses failed" + error);
-        });
+        const { courses, authors, actions } = this.props;
 
-        this.props.actions.loadAuthors().catch(error => {
-            alert("Loading authors failed" + error);
-        });
+        if (courses.length === 0) {
+            actions.loadCourses().catch(error => {
+                alert("Loading courses failed" + error);
+            });
+        }
 
-
+        if (authors.length === 0) {
+            actions.loadAuthors().catch(error => {
+                alert("Loading authors failed" + error);
+            });
+        }
     }
 
     render() {
@@ -32,12 +34,12 @@ class CoursesPage extends React.Component {
 }
 
 CoursesPage.propTypes = {
+    authors: PropTypes.array.isRequired,
     courses: PropTypes.array.isRequired,
     actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
-    debugger;
     return {
         courses:
             state.authors.length === 0
@@ -46,18 +48,17 @@ function mapStateToProps(state) {
                     return {
                         ...course,
                         authorName: state.authors.find(a => a.id === course.authorId).name
-                    }
+                    };
                 }),
         authors: state.authors
     };
 }
 
 function mapDispatchToProps(dispatch) {
-    debugger;
     return {
         actions: {
-            loadCourses: bindActionCreators(courseActions.loadCourses(), dispatch),
-            loadAuthors: bindActionCreators(authorActions.loadAuthors(), dispatch)
+            loadCourses: bindActionCreators(courseActions.loadCourses, dispatch),
+            loadAuthors: bindActionCreators(authorActions.loadAuthors, dispatch)
         }
     };
 }
