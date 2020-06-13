@@ -15,6 +15,7 @@ class CoursesPage extends React.Component {
     };
 
     componentDidMount() {
+        debugger;
         const { courses, authors, actions } = this.props;
 
         if (courses.length === 0) {
@@ -75,6 +76,7 @@ CoursesPage.propTypes = {
 };
 
 function mapStateToProps(state) {
+    debugger;
     return {
         courses:
             state.authors.length === 0

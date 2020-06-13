@@ -24,6 +24,7 @@ export function loadCourses() {
     return courseApi
       .getCourses()
       .then(courses => {
+        debugger;
         dispatch(loadCourseSuccess(courses));
       })
       .catch(error => {

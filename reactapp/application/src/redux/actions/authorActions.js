@@ -12,6 +12,7 @@ export function loadAuthors() {
         return authorApi
             .getAuthors()
             .then(authors => {
+                debugger;
                 dispatch(loadAuthorsSuccess(authors));
             })
             .catch(error => {

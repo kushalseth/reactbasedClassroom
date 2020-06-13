@@ -10,6 +10,7 @@ const SelectInput = ({
   error,
   options
 }) => {
+  debugger;
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}</label>

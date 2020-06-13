@@ -22,6 +22,7 @@ function ManageCoursePage({
     const [saving, setSaving] = useState(false);
 
     useEffect(() => {
+        debugger;
         if (courses.length === 0) {
             loadCourses().catch(error => {
                 alert("Loading courses failed" + error);
@@ -38,6 +39,7 @@ function ManageCoursePage({
     }, [props.course]);
 
     function handleChange(event) {
+        debugger;
         const { name, value } = event.target;
         setCourse(prevCourse => ({
             ...prevCourse,
@@ -98,10 +100,12 @@ ManageCoursePage.propTypes = {
 };
 
 export function getCourseBySlug(courses, slug) {
+    debugger;
     return courses.find(course => course.slug === slug) || null;
 }
 
 function mapStateToProps(state, ownProps) {
+    debugger;
     const slug = ownProps.match.params.slug;
     const course =
         slug && state.courses.length > 0
