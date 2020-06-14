@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const Header = () => {
     const activeStyle = { color: "#F15B2A" };
@@ -9,9 +9,9 @@ const Header = () => {
                 Home
             </NavLink>
             {" | "}
-            <NavLink to="/courses" activeStyle={activeStyle}>
+            <Link target='_blank' to="/courses" activeStyle={activeStyle}>
                 Courses
-            </NavLink>
+            </Link>
             {" | "}
             <NavLink to="/about" activeStyle={activeStyle}>
                 About

@@ -30,24 +30,7 @@ class HoverExample extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <div
-                    onMouseEnter={e => this.handleMouseHover(e, HOVER_Hello1)}
-                    onMouseLeave={e => this.handleMouseHover(e, HOVER_Hello1)}
-
-                >
-                    Hover Me
-        </div>
-                <div
-                    onMouseEnter={e => this.handleMouseHover(e, HOVER_Hello2)}
-                    onMouseLeave={e => this.handleMouseHover(e, HOVER_Hello2)}
-                >
-                    Hover Me2
-        </div>
-                {this.state.isHovering && <div>{this.state.contextText}</div>}
-            </div>
-        );
+        return <a {...this.props} />;
     }
 }
 
